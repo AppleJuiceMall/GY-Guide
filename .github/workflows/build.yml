@@ -15,34 +15,33 @@ on:
 jobs:
   compile:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest  # 完整 TeX Live 镜像
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 安装 SimHei 字体（如果仓库中有 fonts/SimHei.ttf）
-      - name: Install SimHei font
+      - name: Install SimHei font (if present in repo)
         run: |
           if [ -f fonts/SimHei.ttf ]; then
-            mkdir -p ~/.local/share/fonts
-            cp fonts/SimHei.ttf ~/.local/share/fonts/
+            mkdir -p /usr/share/fonts/truetype/
+            cp fonts/SimHei.ttf /usr/share/fonts/truetype/
             fc-cache -fv
             echo "SimHei font installed from repository."
           else
-            echo "Warning: fonts/SimHei.ttf not found, using fallback."
+            echo "Warning: fonts/SimHei.ttf not found, using system fallback."
           fi
 
-      # 编译 LaTeX 文档
       - name: Compile LaTeX with XeLaTeX
-        uses: danteev/texlive-action@v2
-        with:
-          root_file: main.tex               # 👈 改成你的主文件名
-          working_directory: .
-          compiler: latexmk
-          args: -xelatex -file-line-error -interaction=nonstopmode -synctex=1
-          extra_packages: ctex fontspec bibtex
+        run: |
+          latexmk -xelatex \
+            -file-line-error \
+            -interaction=nonstopmode \
+            -synctex=1 \
+            main.tex     # 👈 改成你的主文件名
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: main.pdf                    # 👈 改成输出的 PDF 文件名
+          path: main.pdf  # 👈 改成输出的 PDF 文件名
