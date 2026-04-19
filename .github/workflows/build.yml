@@ -27,13 +27,13 @@ jobs:
 
       - name: Install SimHei font (if present in repo)
         run: |
-          if [ -f fonts/SimHei.ttf ]; then
+          if [ -f fonts/simhei.ttf ]; then
             mkdir -p /usr/share/fonts/truetype/
-            cp fonts/SimHei.ttf /usr/share/fonts/truetype/
+            cp fonts/simhei.ttf /usr/share/fonts/truetype/
             fc-cache -fv
             echo "SimHei font installed from repository."
           else
-            echo "Warning: fonts/SimHei.ttf not found, using system fallback."
+            echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
 
       - name: Compile LaTeX with XeLaTeX
