@@ -36,7 +36,7 @@
     git clone https://github.com/你的账户名/GY-Guide
     ```
 
-值得注意的是，现在 GitHub 不能用 HTTPS 进行推送了，得用 SSH 来推送~~（不然我也不会说适合高级用户了）~~，所以克隆你的仓库得用
+    值得注意的是，现在 GitHub 不能用 HTTPS 进行推送了，得用 SSH 来推送~~（不然我也不会说适合高级用户了）~~，所以克隆你的仓库得用
     ```bash
     git clone git@github.com:你的账户名/GY-Guide.git
     ```
