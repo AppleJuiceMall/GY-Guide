@@ -3,6 +3,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[a4paper, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
 \usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{fontspec}
@@ -16,6 +18,18 @@
     pdfcreator={XeLaTeX},
     pdfproducer={LaTeX}
 }
+
+\setCJKfamilyfont{hei}{SimHei}[AutoFakeBold=3]
+\renewcommand{\heiti}{\CJKfamily{hei}}
+
+\crefformat{figure}{\heiti{图#2#1#3}}
+\crefformat{table}{\heiti{表#2#1#3}}
+\crefformat{section}{\heiti{第#2#1#3节}}
+\crefformat{subsection}{\heiti{第#2#1#3节}}
+\renewcommand{\tablename}{\heiti 表}
+\renewcommand{\thetable}{\heiti \arabic{table}}
+\renewcommand{\figurename}{\heiti 图}
+\renewcommand{\thefigure}{\heiti \arabic{figure}}
 
 
 \title{\heiti \zihao{1} 广雅生存手册\\（高中）}
