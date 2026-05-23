@@ -38,7 +38,7 @@ jobs:
 
       - name: Install
         run: |
-          apk add no-cache font-noto-emoji
+          apk add --no-cache font-noto-emoji
           fc-cache -fv
 
       - name: Compile LaTeX with LuaLaTeX
