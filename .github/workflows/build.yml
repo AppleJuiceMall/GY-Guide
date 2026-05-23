@@ -35,12 +35,13 @@ jobs:
           else
             echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
-        if [ -f fonts/NotoColorEmoji.ttf]; then
+        if [ -f fonts/NotoColorEmoji.ttf ]; then
           cp fonts/NotoColorEmoji.ttf /usr/share/fonts/truetype/
           fc-cache -fv
           echo "Noto Color Emoji font installed from repository"
         else
-          echo "Warning: fonts/sNotoColorEmoji.ttf not found."
+          echo "Warning: fonts/NotoColorEmoji.ttf not found."
+        fi
 
       - name: Compile LaTeX with LuaLaTeX
         run: |
