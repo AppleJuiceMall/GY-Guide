@@ -25,7 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install SimHei font (if present in repo)
+      - name: Install fonts (if present in repo)
         run: |
           if [ -f fonts/simhei.ttf ]; then
             mkdir -p /usr/share/fonts/truetype/
@@ -35,11 +35,12 @@ jobs:
           else
             echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
-      
-      - name: Install Noto Color Emoji
-        run: |
-          apt update
-          apt install -y fonts-noto-color-emoji
+        if [ -f fonts/NotoColorEmoji.ttf]; then
+          cp fonts/NotoColorEmoji.ttf /usr/share/fonts/truetype/
+          fc-cache -fv
+          echo "Noto Color Emoji font installed from repository"
+        else
+          echo "Warning: fonts/sNotoColorEmoji.ttf not found."
 
       - name: Compile LaTeX with LuaLaTeX
         run: |
