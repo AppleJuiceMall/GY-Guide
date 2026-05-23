@@ -36,10 +36,10 @@ jobs:
             echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
 
-      - name: Compile LaTeX with XeLaTeX
+      - name: Compile LaTeX with LuaLaTeX
         run: |
           cd sources
-          latexmk -xelatex \
+          latexmk -lualatex \
             -file-line-error \
             -interaction=nonstopmode \
             -synctex=1 \
