@@ -19,8 +19,8 @@ permissions:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/xu-cheng/texlive-full:latest  # 完整 TeX Live 镜像
+    # container:
+    #   image: ghcr.io/xu-cheng/texlive-full:latest  # 完整 TeX Live 镜像
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,8 +38,8 @@ jobs:
 
       - name: Install
         run: |
-          apk add --no-cache font-noto-emoji
-          fc-cache -fv
+          sudo apt update
+          sudo apt install -y texlive-full
 
       - name: Compile LaTeX with LuaLaTeX
         run: |
