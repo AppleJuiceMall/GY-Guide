@@ -2,7 +2,7 @@
 广雅校园非官方实用指南，由学生共同维护，助力每一位广雅学子快速适应校园生活。
 **所有人均可参与编辑，所有内容均经过审核求证后收录。**
 
-![Stone Badge](https://stone.professorlee.work/api/stone/kuqilin/GY-Guide)
+![Stone Badge](https://stone.professorlee.work/api/stone/druvis1023/GY-Guide)
 
 ## 📋 项目简介
 - 覆盖校园生活、学习、食宿、设施、常见问题等全场景指南
