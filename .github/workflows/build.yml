@@ -50,11 +50,15 @@ jobs:
             -synctex=1 \
             main.tex     # 👈 改成你的主文件名
 
+      - name: Rename PDF file
+        run: |
+          mv sources/main.pdf sources/GY-Guide.pdf
+
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: sources/main.pdf  # 👈 改成输出的 PDF 文件名
+          path: sources/GY-Guide.pdf  # 👈 改成输出的 PDF 文件名
 
       - name: Update latest release
         uses: softprops/action-gh-release@v2
@@ -62,7 +66,7 @@ jobs:
           tag_name: latest           # 固定标签
           name: Latest Build         # 显示名称
           body: 自动构建的最新 PDF，点击下方下载。
-          files: sources/main.pdf
+          files: sources/GY-Guide.pdf
           prerelease: true           # 标记为预发布，不会作为正式版推送通知
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

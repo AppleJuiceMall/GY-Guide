@@ -19,8 +19,8 @@ permissions:
 jobs:
   compile:
     runs-on: ubuntu-latest
-    # container:
-    #   image: ghcr.io/xu-cheng/texlive-full:latest  # 完整 TeX Live 镜像
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest  # 完整 TeX Live 镜像
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,10 +36,10 @@ jobs:
             echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
 
-      - name: Install
-        run: |
-          sudo apt update
-          sudo apt install -y texlive-full
+      # - name: Install
+      #   run: |
+      #     sudo apt update
+      #     sudo apt install -y texlive-full
 
       - name: Compile LaTeX with LuaLaTeX
         run: |
