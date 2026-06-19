@@ -35,6 +35,14 @@ jobs:
           else
             echo "Warning: fonts/simhei.ttf not found, using system fallback."
           fi
+          if [ -f fonts/SimSun.ttc ]; then
+            mkdir -p /usr/share/fonts/truetype/
+            cp fonts/SimSun.ttc /usr/share/fonts/truetype/
+            fc-cache -fv
+            echo "SimSun font installed from repository."
+          else
+            echo "Warning: fonts/SimSun.ttf not found, using system fallback."
+          fi
 
       # - name: Install
       #   run: |
