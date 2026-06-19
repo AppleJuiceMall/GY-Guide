@@ -23,10 +23,15 @@
 % \setCJKfamilyfont{hei}{SimHei}[Renderer=Basic,AutoFakeBold=3]
 % \renewcommand{\heiti}{\CJKfamily{hei}}
 
-\ctexfontset{
-    zhmain = {Filename=SimSun.ttc,Path=/usr/share/fonts/truetype/},
-    zhsans = {Filename=simhei.ttf,Path=/usr/share/fonts/truetype/},
-}
+\setCJKmainfont[
+     Path=/usr/share/fonts/truetype/,
+     Filename=SimSun.ttc
+ ]{SimSun}
+ % 黑体 \heiti、章节标题字体 SimHei
+ \setCJKsansfont[
+     Path=/usr/share/fonts/truetype/,
+     Filename=simhei.ttf
+ ]{SimHei}
 
 
 % 彻底放弃 Emoji 了，有能耐的人再搞吧...
