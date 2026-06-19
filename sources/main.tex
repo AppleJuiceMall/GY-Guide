@@ -26,14 +26,16 @@
 \setCJKmainfont[
      Path=/usr/share/fonts/truetype/,
      Filename=SimSun.ttc,
-     BoldFont=simhei.ttf
- ]{SimSun}
- % 黑体 \heiti、章节标题字体 SimHei
+     AutoFakeBold=2.8,  % 宋体自身加粗，不用simhei顶替粗体
+     AutoFakeSlant=0.2
+]{SimSun}
+ % 无衬线黑体（\heiti、标题），开启伪粗体解决加粗方块
  \setCJKsansfont[
      Path=/usr/share/fonts/truetype/,
-     Filename=simhei.ttf
- ]{SimHei}
-
+     Filename=simhei.ttf,
+     AutoFakeBold=3.0,  % 关键：给SimHei生成模拟粗体
+     AutoFakeSlant=0.2
+]{SimHei}
 
 % 彻底放弃 Emoji 了，有能耐的人再搞吧...
 % \newfontfamily\emojifont{Noto Color Emoji}{Renderer=HarfBuzz}
