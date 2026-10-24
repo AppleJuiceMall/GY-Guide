@@ -326,3 +326,8 @@ TSWLatexianTemp*
 #*Notes.bib
 
 *.bak
+
+# Hugo（preview/hugo 分支）
+resources/
+resources/_gen/
+.hugo_build.lock
