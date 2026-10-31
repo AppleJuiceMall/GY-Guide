@@ -32,6 +32,6 @@ jobs:
         with:
           personal_token: ${{ secrets.TOKEN }}
           external_repository: applejuicemall/GY-Guide
-          publish_branch: docs
+          publish_branch: deploy
           publish_dir: ./public
           commit_message: auto deploy
