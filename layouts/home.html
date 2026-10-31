@@ -1,0 +1,16 @@
+{{- /*
+  站点没有独立的首页内容，根路径直接跳转到文档目录，
+  避免用户从 GitHub Pages 首页看到一个空白页。
+*/ -}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ site.Title }}</title>
+    <link rel="canonical" href="{{ "docs/" | absURL }}" />
+    <meta http-equiv="refresh" content="0; url={{ "docs/" | relURL }}" />
+  </head>
+  <body>
+    <p>正在跳转到 <a href="{{ "docs/" | relURL }}">{{ site.Title }}</a>…</p>
+  </body>
+</html>

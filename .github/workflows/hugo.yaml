@@ -4,25 +4,55 @@ on:
   push:
     branches:
       - docs
+  # 允许在 Actions 页面手动触发一次构建部署
+  workflow_dispatch:
+
+# 同一分支的构建排队执行，新的推送会取消尚未完成的旧构建
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # 与主题要求保持一致（Hextra 需要 >= 0.146.0 的 extended 版）
+      # 固定版本，避免上游发布新版本导致构建突然失败
+      HUGO_VERSION: 0.168.0
+      HUGO_ENVIRONMENT: production
+      # Hugo 的构建缓存目录，配合下面的 cache 步骤复用
+      HUGO_CACHEDIR: ${{ github.workspace }}/.hugo_cache
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # fetch-depth: 0 是 enableGitInfo 取提交时间所必需的
           fetch-depth: 0
+          # 主题 themes/hextra 是 git submodule，必须递归拉取
           submodules: recursive
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"   # 建议固定，按 Hextra 要求调整
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: |
+            .hugo_cache
+            resources/_gen
+          key: hugo-${{ runner.os }}-${{ hashFiles('hugo.toml', 'content/**', 'layouts/**', 'assets/**') }}
+          restore-keys: |
+            hugo-${{ runner.os }}-
+
       - name: Build Web
-        run: hugo --minify --baseURL "https://applejuicemall.github.io/GY-Guide/"
+        run: hugo --minify --gc --baseURL "https://applejuicemall.github.io/GY-Guide/"
 
       - name: Deploy Web
         uses: peaceiris/actions-gh-pages@v4
@@ -31,4 +61,6 @@ jobs:
           external_repository: applejuicemall/GY-Guide
           publish_branch: deploy
           publish_dir: ./public
-          commit_message: auto deploy
+          # 每次部署都清理掉旧文件，避免删掉的文章残留
+          force_orphan: true
+          commit_message: "auto deploy: ${{ github.event.head_commit.message }}"

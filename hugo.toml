@@ -1,3 +1,87 @@
-title="GY-Guide"
+# ============================================================================
+# GY-Guide 站点配置
+# 主题：Hextra (https://github.com/imfing/hextra)
+# 文档：https://imfing.github.io/hextra/zh-cn/docs/guide/
+# ============================================================================
 
-theme="hextra"
+# GitHub Pages 项目站点地址，末尾的 / 不能省略。
+# 本地调试用 `hugo server` 时会自动改用 http://localhost:1313/
+baseURL = "https://applejuicemall.github.io/GY-Guide/"
+
+title = "广雅生存手册"
+locale = "zh-cn"
+defaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
+
+theme = "hextra"
+
+# 生成 /robots.txt
+enableRobotsTXT = true
+
+# 用 Git 提交时间作为页面的最后修改时间（依赖完整 git 历史）
+enableGitInfo = true
+
+# 本站不使用分类/标签，关闭以避免生成空的 taxonomy 页面
+disableKinds = ["taxonomy", "term"]
+
+# 主题要求的 Hugo 版本（Hextra >= 0.146.0，且必须是 extended 版）
+[module.hugoVersion]
+  extended = true
+  min = "0.146.0"
+
+# ----------------------------------------------------------------------------
+# Markdown 渲染
+# unsafe = true 允许正文里的原生 HTML（本手册的 <a id="fig-xxx"> 交叉引用依赖它）
+# ----------------------------------------------------------------------------
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+# ----------------------------------------------------------------------------
+# 站点参数
+# ----------------------------------------------------------------------------
+[params]
+  description = "广雅中学（花都校区）学生自发编写的新生生存指南"
+  externalLinkDecoration = true
+
+  # 顶部导航栏
+  [params.navbar]
+    displayTitle = true
+    displayLogo = false
+
+  # 明暗主题
+  [params.theme]
+    default = "system"
+    displayToggle = true
+
+  # 页脚
+  [params.footer]
+    enable = true
+    displayCopyright = true
+    displayPoweredBy = false
+
+  # 正文底部自动显示“最后更新”时间
+  displayUpdatedDate = true
+  dateFormat = "2006-01-02"
+  displayUpdatedAuthor = false
+
+  # 全文搜索（flexsearch 由主题默认从 CDN 加载）
+  [params.search]
+    enable = true
+    type = "flexsearch"
+
+# ----------------------------------------------------------------------------
+# 顶部导航菜单
+# ----------------------------------------------------------------------------
+[[menu.main]]
+  name = "搜索"
+  weight = 1
+  params = { type = "search" }
+
+[[menu.main]]
+  name = "GitHub"
+  weight = 2
+  url = "https://github.com/AppleJuiceMall/GY-Guide"
+  params = { icon = "github" }

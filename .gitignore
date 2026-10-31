@@ -1,2 +1,12 @@
+# 备份文件
 *.bak
 
+# Hugo 构建产物
+/public/
+/resources/_gen/
+/.hugo_cache/
+.hugo_build.lock
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db

@@ -1,4 +1,7 @@
-# 前言
+---
+title: 前言
+weight: 2
+---
 
 目前来说，这个项目是挂在 GitHub 上的，地址为 [https://github.com/druvis1023/GY-Guide.git](https://github.com/druvis1023/GY-Guide.git)，所有人都可以参与编写，贡献自己的一份力量。
 

@@ -1,4 +1,7 @@
-# 广雅的生活
+---
+title: 广雅的生活
+weight: 4
+---
 
 <a id="chap-life"></a>
 

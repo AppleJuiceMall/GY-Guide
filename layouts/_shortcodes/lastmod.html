@@ -1,0 +1,3 @@
+{{- /* 输出本页最后修改时间（依赖 enableGitInfo） */ -}}
+{{- $date := .Page.Lastmod -}}
+{{- with $date -}}{{ time.Format "2006-01-02" . }}{{- end -}}
