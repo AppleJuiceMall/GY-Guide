@@ -9,14 +9,14 @@
 先简单写一个从广雅应用到百度的超级无敌保姆级教程吧。首先你需要一个**知乎账号**（重要），等广雅应用上来之后打开广雅应用（见 [图：打开广雅应用](#fig-openGY)）。
 
 <a id="fig-openGY"></a>
-![打开广雅应用](/pics/toBaidu/1.png)
+![打开广雅应用](../pics/toBaidu/1.png)
 
 *图：打开广雅应用*
 
 打开后，找到这个问卷（见 [图：问卷](#fig-wenJuan)），问卷下面有很多个链接，找到“DeepSeek”打开（见 [图：打开Deepseek](#fig-findDS)）。
 
 <a id="fig-wenJuan"></a>
-![问卷](/pics/toBaidu/2.png)
+![问卷](../../pics/toBaidu/2.png)
 
 *图：问卷*
 
