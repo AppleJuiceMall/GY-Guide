@@ -1,0 +1,37 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - docs
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.128.0"   # 建议固定，按 Hextra 要求调整
+          extended: true
+
+      - name: Gen Changelog
+        run: bash scripts/gen-changelog.sh
+
+      - name: Build Web
+        run: hugo --minify --baseURL "https://applejuicemall.github.io/GY-Guide/"
+
+      - name: Deploy Web
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.TOKEN }}
+          external_repository: applejuicemall/GY-Guide
+          publish_branch: docs
+          publish_dir: ./public
+          commit_message: auto deploy
