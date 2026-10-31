@@ -18,7 +18,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.128.0"   # 建议固定，按 Hextra 要求调整
+          hugo-version: "latest"   # 建议固定，按 Hextra 要求调整
           extended: true
 
       - name: Build Web

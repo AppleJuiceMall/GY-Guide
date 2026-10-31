@@ -21,9 +21,6 @@ jobs:
           hugo-version: "0.128.0"   # 建议固定，按 Hextra 要求调整
           extended: true
 
-      - name: Gen Changelog
-        run: bash scripts/gen-changelog.sh
-
       - name: Build Web
         run: hugo --minify --baseURL "https://applejuicemall.github.io/GY-Guide/"
 
