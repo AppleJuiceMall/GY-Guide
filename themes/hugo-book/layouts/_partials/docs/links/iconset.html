@@ -1,3 +1,0 @@
-{{- $iconset := "iconset.svg" -}}
-{{- $sprite := resources.Get $iconset | resources.ExecuteAsTemplate $iconset nil | resources.Minify | resources.Fingerprint -}}
-{{- return partial "docs/links/resource-precache" $sprite -}}
